@@ -5,7 +5,7 @@
 import os, json
 
 OUT = os.path.dirname(os.path.abspath(__file__))
-V = "3"  # bump on every deploy — cache-busts css/js
+V = "4"  # bump on every deploy — cache-busts css/js
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E"
 
@@ -434,6 +434,13 @@ like most things.</p>
     });
     wrap.appendChild(label);
     wrap.appendChild(row);
+  });
+
+  /* pre-select the first value of every option group —
+     the add button must never appear dead */
+  wrap.querySelectorAll('.variant-row').forEach(function (row) {
+    var first = row.querySelector('button');
+    if (first) first.click();
   });
 
   function currentVariant() {
