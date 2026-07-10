@@ -5,6 +5,7 @@
 import os, json
 
 OUT = os.path.dirname(os.path.abspath(__file__))
+V = "3"  # bump on every deploy — cache-busts css/js
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E"
 
@@ -43,8 +44,8 @@ def chrome(title, body, root=".", active="", extra_head="", extra_js=""):
 <link rel="icon" href="{FAVICON}">
 <link rel="preload" href="{root}/assets/fonts/CormorantGaramond-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}/assets/fonts/DMMono-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{root}/css/tokens.css">
-<link rel="stylesheet" href="{root}/css/main.css">
+<link rel="stylesheet" href="{root}/css/tokens.css?v={V}">
+<link rel="stylesheet" href="{root}/css/main.css?v={V}">
 {extra_head}
 </head>
 <body data-root="{root}">
@@ -152,10 +153,10 @@ rebel in luxury.</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="{root}/js/shopify-config.js"></script>
-<script src="{root}/js/data.js"></script>
-<script src="{root}/js/site.js"></script>
-<script src="{root}/js/motion.js"></script>
+<script src="{root}/js/shopify-config.js?v={V}"></script>
+<script src="{root}/js/data.js?v={V}"></script>
+<script src="{root}/js/site.js?v={V}"></script>
+<script src="{root}/js/motion.js?v={V}"></script>
 {extra_js}
 </body>
 </html>
