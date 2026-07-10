@@ -1,0 +1,18 @@
+/* versan — tokens.css */
+
+:root {
+  --obsidian: #0D0D0B;
+  --bone: #F4F1EB;
+  --forest: #2D6A4F;
+  --deep-forest: #1B4332;
+  --warm-gray: #8C8880;
+
+  --font-display: 'Cormorant Garamond', 'Cormorant', serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+
+  --nav-h: 64px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --max-w: 1440px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

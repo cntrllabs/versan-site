@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  you found this.
+  most people don't look.
+
+  this is the versan source.
+  rebel in luxury.
+  est. 3:33.
+  nosce te ipsum.
+
+  if you're reading this you're
+  already one of us.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vrsn · considering</title>
+<meta name="description" content="versan. rebel in luxury. est. 3:33. nosce te ipsum.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/CormorantGaramond-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/DMMono-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body data-root="..">
+
+<div id="loading-screen">
+  <div class="loading-lines">
+    <p>identifying visitor</p>
+    <p>cross-referencing preferences</p>
+    <p>building your profile</p>
+    <p>selecting your content</p>
+    <p>welcome back.</p>
+  </div>
+</div>
+
+<div id="policy-bar">
+  <span>something has changed. it probably affects you. most people will not read it.</span>
+  <button type="button">[ acknowledge ]</button>
+  <button type="button">[ ignore, as intended ]</button>
+</div>
+
+<nav id="main-nav" aria-label="primary">
+  <a class="wordmark" href="../index.html" aria-label="versan home"><span class="vd">v</span>rsn</a>
+  <ul>
+        <li><a href="../shop.html">shop</a></li>
+        <li><a href="../mens.html">men</a></li>
+        <li><a href="../womens.html">women</a></li>
+        <li><a href="../accessories.html">accessories</a></li>
+        <li><a href="../unknown-series.html">the unknown series</a></li>
+        <li><a href="../about.html">about</a></li>
+  </ul>
+  <div class="nav-utils">
+    <button id="search-open" type="button" aria-label="search">search</button>
+    <a href="../cart.html" aria-label="your record">record <span class="cart-count"></span></a>
+    <button id="nav-toggle" type="button" aria-label="open navigation">menu</button>
+  </div>
+</nav>
+
+<div id="mobile-nav" aria-label="mobile navigation">
+  <span class="mobile-header">you are navigating vrsn</span>
+  <button class="close-btn" type="button">close</button>
+  <ul>
+      <li><a href="../shop.html">shop</a></li>
+      <li><a href="../mens.html">men</a></li>
+      <li><a href="../womens.html">women</a></li>
+      <li><a href="../accessories.html">accessories</a></li>
+      <li><a href="../unknown-series.html">the unknown series</a></li>
+      <li><a href="../about.html">about</a></li>
+      <li><a href="../cart.html">record</a></li>
+  </ul>
+</div>
+
+<div id="search-overlay" role="dialog" aria-label="search">
+  <button id="search-close" type="button">close</button>
+  <input type="search" placeholder="what are you looking for." aria-label="search products">
+  <div id="search-results"></div>
+</div>
+
+
+<main class="wrap">
+  <article class="pdp">
+    <div class="pdp-media reveal">
+      <div class="main-img">
+        <img src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3003663_0_3d.jpg?v=1780396700&width=1200" alt="the object in question." width="1200" height="1500" fetchpriority="high">
+      </div>
+    </div>
+    <div class="pdp-info">
+      <h1 class="reveal">the annette</h1>
+      <div class="drop-line reveal">drop 005 &middot; the unknown series</div>
+      
+      <div class="price reveal" id="price">$93.00</div>
+      <div class="desc reveal">a shirt.
+
+oversized fit, heavyweight jersey. the v mark at the chest.
+
+named after someone who knew something.
+
+vrsn &middot; rebel in luxury &middot; est. 3:33
+the unknown series</div>
+
+      <div id="options"></div>
+      <button class="size-guide-link" type="button" id="size-guide-open">sizing notes &rarr;</button>
+
+      <button class="add-btn" id="add-btn" data-id="the-annette" data-name="the annette">[ add to record ]</button>
+
+      <details class="toggle-block">
+        <summary>shipping + handling &rarr;</summary>
+        <div class="toggle-body">produced somewhere.
+arrives in 5&ndash;7 business days.
+
+we do not control what happens
+between there and here.
+
+neither do you.</div>
+      </details>
+      <details class="toggle-block">
+        <summary>returns &rarr;</summary>
+        <div class="toggle-body">if it arrives damaged, we will fix it.
+if you changed your mind, we understand.
+contact us within 14 days.
+
+some things cannot be returned.
+this is not one of them.</div>
+      </details>
+    </div>
+  </article>
+
+  <section class="related">
+    <h2>also observed</h2>
+    <div class="product-grid" id="related-grid"></div>
+  </section>
+</main>
+
+<div class="modal" id="size-modal" role="dialog" aria-label="sizing notes">
+  <div class="modal-box">
+    <h3>sizing notes</h3>
+    <p>our garments run as expected.
+your body is not a problem to be solved.
+
+if between sizes, take the larger one.
+more fabric. less compromise.
+
+measurements are approximate.
+like most things.</p>
+    <button class="modal-close" type="button">[ close ]</button>
+  </div>
+</div>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-mark"><span class="vd">v</span>rsn</div>
+        <div class="foot-lore">rebel in luxury<br>est. 3:33<br>nosce te ipsum<br>45.5231&deg; n, 122.6765&deg; w</div>
+      </div>
+      <nav aria-label="footer">
+        <a href="../shop.html">shop</a>
+        <a href="../mens.html">men</a>
+        <a href="../womens.html">women</a>
+        <a href="../accessories.html">accessories</a>
+        <a href="../unknown-series.html">the unknown series</a>
+        <a href="../about.html">about</a>
+        <a href="../privacy.html">privacy policy</a>
+      </nav>
+    </div>
+    <div class="foot-legal">&copy; vrsn 2026 &mdash; all objects reserved.</div>
+    <div class="foot-fine">by visiting this site you have agreed to be observed.
+this observation is mutual.
+we see you seeing us.
+absurd realism &mdash; the normalization of things
+that should not be normal,
+presented without comment,
+worn without apology.
+
+rebel in luxury.</div>
+  </div>
+</footer>
+
+<div id="toast" role="status">
+  <div class="t-head">noted.</div>
+  <div class="t-body"></div>
+  <div class="t-actions">
+    <a href="../cart.html">[ view record ]</a>
+    <a href="../shop.html">[ continue acquiring ]</a>
+  </div>
+</div>
+
+<div id="cookie-banner">
+  <div class="cb-inner">
+    <span class="cb-strong">this site uses cookies.</span><br>
+    so does everything else.<br>
+    you accepted that a long time ago.
+    <div class="cb-actions">
+      <button type="button">[ i know ]</button>
+      <button type="button">[ tell me more* ]</button>
+    </div>
+    <div class="cb-fine">*there is nothing more to tell.</div>
+  </div>
+</div>
+
+<canvas id="atmosphere" aria-hidden="true"></canvas>
+<div id="cursor" aria-hidden="true"></div>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/site.js"></script>
+<script src="../js/motion.js"></script>
+<script>
+(function () {
+  var grid = document.getElementById('related-grid');
+  if (!grid) return;
+  grid.innerHTML = window.VRSN_PRODUCTS.filter(function (p) { return p.id !== 'the-annette'; })
+    .map(window.VRSN_CARD).join('');
+  if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    grid.querySelectorAll('.reveal').forEach(function (el) {
+      gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+  } else {
+    grid.querySelectorAll('.reveal').forEach(function (el) { el.style.opacity = 1; el.style.transform = 'none'; });
+  }
+})();
+</script>
+<script>
+(function () {
+  var add = document.getElementById('add-btn');
+  var product = window.VRSN_PRODUCTS.find(function (x) { return x.id === add.getAttribute('data-id'); });
+  var priceEl = document.getElementById('price');
+  var sel = product.options.map(function () { return null; });
+
+  /* render option groups */
+  var wrap = document.getElementById('options');
+  product.options.forEach(function (opt, gi) {
+    var label = document.createElement('div');
+    label.className = 'variant-label';
+    label.textContent = opt.label;
+    var row = document.createElement('div');
+    row.className = 'variant-row';
+    opt.values.forEach(function (v) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = v;
+      b.addEventListener('click', function () {
+        row.querySelectorAll('button').forEach(function (x) { x.classList.remove('is-selected'); });
+        b.classList.add('is-selected');
+        sel[gi] = v;
+        update();
+      });
+      row.appendChild(b);
+    });
+    wrap.appendChild(label);
+    wrap.appendChild(row);
+  });
+
+  function currentVariant() {
+    if (sel.some(function (s) { return s === null; })) return undefined;
+    return window.VRSN_VARIANT(product, sel);
+  }
+
+  function update() {
+    var v = currentVariant();
+    if (v && v.price) priceEl.textContent = '$' + v.price.toFixed(2);
+    else priceEl.textContent = '$' + product.price.toFixed(2);
+    if (v && v.qty === 0) {
+      add.textContent = 'gone.';
+      add.setAttribute('disabled', '');
+    } else {
+      add.removeAttribute('disabled');
+      if (!add._done) add.textContent = '[ add to record ]';
+    }
+  }
+
+  /* apex depletion */
+  var ar = document.getElementById('apex-remaining');
+  if (ar && product.apex) {
+    ar.textContent = product.apex.remaining + ' of ' + product.apex.cap + ' remain on the record.';
+  }
+
+  add.addEventListener('mouseenter', function () {
+    if (!add._done && !add.hasAttribute('disabled')) add.textContent = '[ adding... ]';
+  });
+  add.addEventListener('mouseleave', function () {
+    if (!add._done && !add.hasAttribute('disabled')) add.textContent = '[ add to record ]';
+  });
+  add.addEventListener('click', function () {
+    if (sel.some(function (s) { return s === null; })) {
+      add.textContent = '[ make your selections ]';
+      setTimeout(function () { add.textContent = '[ add to record ]'; }, 1800);
+      return;
+    }
+    var v = currentVariant();
+    if (!v || v.qty === 0) return;
+    window.VRSN_RECORD.add(product.id, sel.join('|'));
+    window.VRSN_TOAST(product.name);
+    add.textContent = '[ recorded ]';
+    add._done = true;
+    setTimeout(function () { add._done = false; add.textContent = '[ add to record ]'; }, 3000);
+  });
+
+  var m = document.getElementById('size-modal');
+  document.getElementById('size-guide-open').addEventListener('click', function () { m.classList.add('is-open'); });
+  m.querySelector('.modal-close').addEventListener('click', function () { m.classList.remove('is-open'); });
+  m.addEventListener('click', function (e) { if (e.target === m) m.classList.remove('is-open'); });
+})();
+</script>
+</body>
+</html>
