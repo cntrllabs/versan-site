@@ -152,6 +152,7 @@ rebel in luxury.</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="{root}/js/shopify-config.js"></script>
 <script src="{root}/js/data.js"></script>
 <script src="{root}/js/site.js"></script>
 <script src="{root}/js/motion.js"></script>
@@ -269,7 +270,7 @@ pages["shop.html"] = chrome(
 
 produced for general use.
 33 units. numbered. never restocked.
-33 of 33 remain on the record.
+<span data-apex-live>33 of 33 remain on the record.</span>
 
 when it is gone, the record is closed.</div>
     </div>
@@ -338,7 +339,7 @@ for p in PRODUCTS:
     apex_line = ""
     if p["tier"] == "apex":
         apex_line = ('<div class="mono-label" style="margin-bottom:8px">apex &middot; capsule 001 &middot; numbered &middot; never restocked</div>'
-                     '<div class="mono-label" id="apex-remaining" style="margin-bottom:18px"></div>')
+                     '<div class="mono-label" id="apex-remaining" data-apex-live style="margin-bottom:18px"></div>')
     body = f"""
 <main class="wrap">
   <article class="pdp">
@@ -609,9 +610,15 @@ everything is calculated, eventually.</div>
     });
     var pr = document.getElementById('proceed-btn');
     if (pr) pr.addEventListener('click', function () {
-      if (permalink.length === 0) return;
+      var items = [];
+      r.forEach(function (l) {
+        var p = window.VRSN_PRODUCTS.find(function (x) { return x.id === l.id; });
+        var v = p && p.variants ? p.variants[l.variant] : null;
+        if (v && v.vid) items.push({ vid: v.vid, qty: l.qty });
+      });
+      if (items.length === 0) return;
       pr.textContent = '[ proceeding... ]';
-      location.href = window.VRSN_STORE + '/cart/' + permalink.join(',');
+      window.VRSN_CHECKOUT(items).then(function (url) { location.href = url; });
     });
   }
   render();

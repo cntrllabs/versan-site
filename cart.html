@@ -151,6 +151,7 @@ rebel in luxury.</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="./js/shopify-config.js"></script>
 <script src="./js/data.js"></script>
 <script src="./js/site.js"></script>
 <script src="./js/motion.js"></script>
@@ -200,9 +201,15 @@ rebel in luxury.</div>
     });
     var pr = document.getElementById('proceed-btn');
     if (pr) pr.addEventListener('click', function () {
-      if (permalink.length === 0) return;
+      var items = [];
+      r.forEach(function (l) {
+        var p = window.VRSN_PRODUCTS.find(function (x) { return x.id === l.id; });
+        var v = p && p.variants ? p.variants[l.variant] : null;
+        if (v && v.vid) items.push({ vid: v.vid, qty: l.qty });
+      });
+      if (items.length === 0) return;
       pr.textContent = '[ proceeding... ]';
-      location.href = window.VRSN_STORE + '/cart/' + permalink.join(',');
+      window.VRSN_CHECKOUT(items).then(function (url) { location.href = url; });
     });
   }
   render();

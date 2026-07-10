@@ -214,12 +214,19 @@
 
   /* ── the record (cart) ──────────────────────────────── */
 
+  /* v2 key — clears stage-1 test records that predate real variant ids.
+     lines that can't resolve to a shopify variant are dropped on read. */
   function getRecord() {
-    try { return JSON.parse(localStorage.getItem('vrsn-record') || '[]'); }
-    catch (e) { return []; }
+    try {
+      var r = JSON.parse(localStorage.getItem('vrsn-record-v2') || '[]');
+      return r.filter(function (l) {
+        var p = (window.VRSN_PRODUCTS || []).find(function (x) { return x.id === l.id; });
+        return p && p.variants && p.variants[l.variant];
+      });
+    } catch (e) { return []; }
   }
   function setRecord(r) {
-    localStorage.setItem('vrsn-record', JSON.stringify(r));
+    localStorage.setItem('vrsn-record-v2', JSON.stringify(r));
     updateCount();
   }
   function updateCount() {
@@ -312,6 +319,78 @@
       if (c) c.hidden = false;
     });
   });
+
+  /* ── storefront api ─────────────────────────────────── */
+
+  window.VRSN_SF = function (query, variables) {
+    var cfg = window.VRSN_SHOPIFY;
+    if (!cfg) return Promise.reject(new Error('no storefront config'));
+    return fetch('https://' + cfg.domain + '/api/' + cfg.apiVersion + '/graphql.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': cfg.storefrontAccessToken
+      },
+      body: JSON.stringify({ query: query, variables: variables || {} })
+    }).then(function (r) { return r.json(); });
+  };
+
+  /* real checkout: storefront cart api → hosted checkout.
+     falls back to a cart permalink if the api call fails. */
+  window.VRSN_CHECKOUT = function (lines) {
+    var permalink = (window.VRSN_STORE || '') + '/cart/' +
+      lines.map(function (l) { return l.vid + ':' + l.qty; }).join(',');
+    return window.VRSN_SF(
+      'mutation cartCreate($input: CartInput!) {\n' +
+      '  cartCreate(input: $input) {\n' +
+      '    cart { checkoutUrl }\n' +
+      '    userErrors { message }\n' +
+      '  }\n' +
+      '}',
+      {
+        input: {
+          lines: lines.map(function (l) {
+            return { quantity: l.qty, merchandiseId: 'gid://shopify/ProductVariant/' + l.vid };
+          })
+        }
+      }
+    ).then(function (res) {
+      var url = res && res.data && res.data.cartCreate && res.data.cartCreate.cart &&
+        res.data.cartCreate.cart.checkoutUrl;
+      return url || permalink;
+    }).catch(function () { return permalink; });
+  };
+
+  /* live apex depletion — sums quantityAvailable across apex variants.
+     if the token's scopes don't expose inventory counts, the baked
+     figures stay in place. availability flags still come through. */
+  function liveApex() {
+    var els = document.querySelectorAll('[data-apex-live]');
+    if (!els.length || !window.VRSN_SHOPIFY) return;
+    window.VRSN_SF(
+      'query apex($handle: String!) {\n' +
+      '  product(handle: $handle) {\n' +
+      '    variants(first: 50) { nodes { quantityAvailable availableForSale } }\n' +
+      '  }\n' +
+      '}',
+      { handle: 'the-standard-issue-drop-001' }
+    ).then(function (res) {
+      var nodes = res && res.data && res.data.product && res.data.product.variants &&
+        res.data.product.variants.nodes;
+      if (!nodes) return;
+      var known = nodes.every(function (n) { return typeof n.quantityAvailable === 'number'; });
+      if (!known) return; /* inventory scope not granted — keep baked count */
+      var remaining = nodes.reduce(function (s, n) {
+        return s + Math.max(0, n.quantityAvailable);
+      }, 0);
+      els.forEach(function (el) {
+        el.textContent = remaining > 0
+          ? remaining + ' of 33 remain on the record.'
+          : 'the record is closed.';
+      });
+    }).catch(function () {});
+  }
+  liveApex();
 
   /* ── product card rendering ─────────────────────────── */
 
