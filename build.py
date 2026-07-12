@@ -5,7 +5,7 @@
 import os, json
 
 OUT = os.path.dirname(os.path.abspath(__file__))
-V = "4"  # bump on every deploy — cache-busts css/js
+V = "5"  # bump on every deploy — cache-busts css/js
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E"
 
@@ -224,9 +224,9 @@ pages["index.html"] = chrome(
     <div class="claim reveal">we make things.<br>you decide what they mean.</div>
   </section>
 
-  <section class="wrap" aria-label="drop 001">
+  <section class="wrap" aria-label="case 002">
     <div class="grid-head reveal">
-      <h2>drop 001<br>the unknown series</h2>
+      <h2>case &mdash; 002<br>the standard pack</h2>
       <div class="sub">these are the available objects.</div>
     </div>
     <div class="product-grid" id="home-grid"></div>
@@ -256,24 +256,24 @@ pages["shop.html"] = chrome(
     """
 <main class="wrap">
   <header class="page-head">
-    <h1 class="reveal">drop 001<br>the unknown series</h1>
+    <h1 class="reveal">case &mdash; 002<br>the standard pack</h1>
     <p class="sub reveal">these are the available objects.</p>
   </header>
 
-  <section class="apex-feature reveal" aria-label="apex">
+  <section class="apex-feature reveal" aria-label="the standard pack">
     <a class="apex-media" href="product/the-standard-issue.html">
-      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3003603_0_3d.jpg?v=1780386196&width=1100" alt="the object in question." width="1100" height="1375">
+      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039026_0_3d.jpg?v=1783804262&width=1100" alt="the object in question." width="1100" height="1375">
     </a>
     <div>
-      <div class="mono-label">apex &middot; capsule 001</div>
-      <h3><a href="product/the-standard-issue.html">the standard issue</a></h3>
-      <div class="apex-copy">hazmat suit &middot; drop 001 &middot; $333
+      <div class="mono-label">commission for uniform provision</div>
+      <h3><a href="product/the-standard-issue.html">the standard pack</a></h3>
+      <div class="apex-copy">unit no. 04-2891 &middot; standard issue &mdash; tier 2
 
-produced for general use.
-33 units. numbered. never restocked.
-<span data-apex-live>33 of 33 remain on the record.</span>
+twelve pieces. one ledger entry.
+a unit's issue is not a garment. it is a wardrobe,
+tracked under a single serial.
 
-when it is gone, the record is closed.</div>
+issued as a pack. acquired as pieces.</div>
     </div>
   </section>
 
@@ -319,7 +319,7 @@ def category_page(fname, title, h1, cat, hero_img, hero_alt):
   </section>
   <div class="wrap">
     <div class="grid-head reveal">
-      <h2>drop 001 &middot; the unknown series</h2>
+      <h2>case &mdash; 002 &middot; the standard pack</h2>
       <div class="sub">these are the available objects.</div>
     </div>
     <div class="product-grid" id="cat-grid"></div>
@@ -336,9 +336,9 @@ pages["accessories.html"] = category_page("accessories.html", "vrsn · subject: 
 
 # ── product pages ────────────────────────────────────────
 for p in PRODUCTS:
-    desc_html = p["desc"] + "\n\nvrsn &middot; rebel in luxury &middot; est. 3:33\nthe unknown series"
+    desc_html = p["desc"]
     apex_line = ""
-    if p["tier"] == "apex":
+    if p.get("tier") == "apex":
         apex_line = ('<div class="mono-label" style="margin-bottom:8px">apex &middot; capsule 001 &middot; numbered &middot; never restocked</div>'
                      '<div class="mono-label" id="apex-remaining" data-apex-live style="margin-bottom:18px"></div>')
     body = f"""
@@ -351,7 +351,7 @@ for p in PRODUCTS:
     </div>
     <div class="pdp-info">
       <h1 class="reveal">{p['name']}</h1>
-      <div class="drop-line reveal">drop {p['drop']} &middot; the unknown series</div>
+      <div class="drop-line reveal">{p['sub'].replace('—', '&mdash;')}</div>
       {apex_line}
       <div class="price reveal" id="price">${p['price']:.2f}</div>
       <div class="desc reveal">{desc_html}</div>
@@ -498,11 +498,11 @@ like most things.</p>
 
 # ── unknown series ───────────────────────────────────────
 QUOTES = [
-    ("the-standard-issue", "it's fine. everything is fine."),
-    ("the-bucket", "it never used to flood here."),
-    ("the-corduroy-cap", "everyone agreed. no one was asked."),
-    ("the-fanny", "you can't be too careful anymore."),
-    ("the-annette", "i don't remember agreeing to this."),
+    ("the-standard-issue", "you are not unclothed. you are simply between cycles."),
+    ("the-jacket", "a loose thread is not a flaw in the system. it is the system, noticing you."),
+    ("the-poncho", "compromised issue still keeps the rain off. that was never the part they were protecting."),
+    ("the-tee", "equity of appearance: nobody over, nobody under, nobody anybody."),
+    ("the-tag", "cut it, tag it, keep it. it was never really theirs to begin with."),
 ]
 qblocks = ""
 for pid, q in QUOTES:
@@ -519,15 +519,15 @@ pages["unknown-series.html"] = chrome(
     f"""
 <main>
   <header class="page-head wrap">
-    <h1 class="reveal">the unknown series<br>capsule 001</h1>
+    <h1 class="reveal">the unknown series<br>case &mdash; 002 &middot; standard issue</h1>
     <p class="sub reveal">these pieces ask something.
 they do not wait for an answer.</p>
   </header>
 
   <section class="quote-block">
-    <blockquote>&ldquo;we have always done it this way.&rdquo;</blockquote>
+    <blockquote>&ldquo;we have always dressed this way.&rdquo;</blockquote>
     <div class="attr">&mdash; unknown</div>
-    <div class="q-product">who told you that was true?</div>
+    <div class="q-product">who issued you that belief?</div>
   </section>
 {qblocks}
 </main>

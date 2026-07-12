@@ -20,8 +20,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E">
 <link rel="preload" href="../assets/fonts/CormorantGaramond-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/DMMono-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/tokens.css?v=4">
-<link rel="stylesheet" href="../css/main.css?v=4">
+<link rel="stylesheet" href="../css/tokens.css?v=5">
+<link rel="stylesheet" href="../css/main.css?v=5">
 
 </head>
 <body data-root="..">
@@ -84,27 +84,30 @@
   <article class="pdp">
     <div class="pdp-media reveal">
       <div class="main-img">
-        <img src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3003663_0_3d.jpg?v=1780396700&width=1200" alt="the object in question." width="1200" height="1500" fetchpriority="high">
+        <img src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039498_0_3d.jpg?v=1783803969&width=1200" alt="the object in question." width="1200" height="1500" fetchpriority="high">
       </div>
     </div>
     <div class="pdp-info">
-      <h1 class="reveal">the annette</h1>
-      <div class="drop-line reveal">drop 005 &middot; the unknown series</div>
+      <h1 class="reveal">the trousers</h1>
+      <div class="drop-line reveal">case &mdash; 002 · the standard pack</div>
       
       <div class="price reveal" id="price">$93.00</div>
-      <div class="desc reveal">a shirt.
+      <div class="desc reveal">issued.
 
-oversized fit, heavyweight jersey. the v mark at the chest.
+base layer bottom. elastic waistband, side pockets, loose fit. handmade to order.
 
-named after someone who knew something.
+pairs with the roll neck. a unit's base layer is issued as a set.
 
-vrsn &middot; rebel in luxury &middot; est. 3:33
-the unknown series</div>
+chest stamp: commission for uniform provision · standard issue — tier 2 · cycle 04.
+unit no. 04-2891.
+
+vrsn · rebel in luxury · est. 3:33
+case — 002 · the standard pack</div>
 
       <div id="options"></div>
       <button class="size-guide-link" type="button" id="size-guide-open">sizing notes &rarr;</button>
 
-      <button class="add-btn" id="add-btn" data-id="the-annette" data-name="the annette">[ add to record ]</button>
+      <button class="add-btn" id="add-btn" data-id="the-trousers" data-name="the trousers">[ add to record ]</button>
 
       <details class="toggle-block">
         <summary>shipping + handling &rarr;</summary>
@@ -208,15 +211,15 @@ rebel in luxury.</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="../js/shopify-config.js?v=4"></script>
-<script src="../js/data.js?v=4"></script>
-<script src="../js/site.js?v=4"></script>
-<script src="../js/motion.js?v=4"></script>
+<script src="../js/shopify-config.js?v=5"></script>
+<script src="../js/data.js?v=5"></script>
+<script src="../js/site.js?v=5"></script>
+<script src="../js/motion.js?v=5"></script>
 <script>
 (function () {
   var grid = document.getElementById('related-grid');
   if (!grid) return;
-  grid.innerHTML = window.VRSN_PRODUCTS.filter(function (p) { return p.id !== 'the-annette'; })
+  grid.innerHTML = window.VRSN_PRODUCTS.filter(function (p) { return p.id !== 'the-trousers'; })
     .map(window.VRSN_CARD).join('');
   if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     grid.querySelectorAll('.reveal').forEach(function (el) {

@@ -401,7 +401,7 @@
       '<div class="card-media"><img loading="lazy" src="' + window.VRSN_IMG(p.img, 800) + '" alt="' + p.alt + '" width="800" height="1000"></div>' +
       '<div class="card-meta">' +
       '<div class="p-name" data-name="' + p.name + '" data-observed="' + p.observed + '">' + p.name + '</div>' +
-      '<div class="p-sub">drop ' + p.drop + ' · the unknown series</div>' +
+      '<div class="p-sub">' + (p.sub || '') + '</div>' +
       '<div class="p-price">$' + p.price.toFixed(2) + '</div>' +
       '</div></a>';
   };

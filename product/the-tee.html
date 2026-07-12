@@ -84,22 +84,22 @@
   <article class="pdp">
     <div class="pdp-media reveal">
       <div class="main-img">
-        <img src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039026_0_3d.jpg?v=1783804262&width=1200" alt="the object in question." width="1200" height="1500" fetchpriority="high">
+        <img src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039042_0_3d.jpg?v=1783806188&width=1200" alt="the object in question." width="1200" height="1500" fetchpriority="high">
       </div>
     </div>
     <div class="pdp-info">
-      <h1 class="reveal">the standard issue</h1>
+      <h1 class="reveal">the tee</h1>
       <div class="drop-line reveal">case &mdash; 002 · the standard pack</div>
       
-      <div class="price reveal" id="price">$333.00</div>
+      <div class="price reveal" id="price">$123.00</div>
       <div class="desc reveal">issued.
 
-hazmat suit. poly waterproof fabric. zip-up front. hooded. handmade to order.
+oversized boxy tee. heavyweight jersey. handmade to order.
 
 chest stamp: commission for uniform provision · standard issue — tier 2 · cycle 04.
-back: barcode. unit no. 04-2891.
+back: barcode, high and centered below the collar seam. unit no. 04-2891.
 
-you are not a person wearing clothes. you are a unit carrying its current cycle's issue.
+equity of appearance: nobody over, nobody under, nobody anybody.
 
 vrsn · rebel in luxury · est. 3:33
 case — 002 · the standard pack</div>
@@ -107,7 +107,7 @@ case — 002 · the standard pack</div>
       <div id="options"></div>
       <button class="size-guide-link" type="button" id="size-guide-open">sizing notes &rarr;</button>
 
-      <button class="add-btn" id="add-btn" data-id="the-standard-issue" data-name="the standard issue">[ add to record ]</button>
+      <button class="add-btn" id="add-btn" data-id="the-tee" data-name="the tee">[ add to record ]</button>
 
       <details class="toggle-block">
         <summary>shipping + handling &rarr;</summary>
@@ -219,7 +219,7 @@ rebel in luxury.</div>
 (function () {
   var grid = document.getElementById('related-grid');
   if (!grid) return;
-  grid.innerHTML = window.VRSN_PRODUCTS.filter(function (p) { return p.id !== 'the-standard-issue'; })
+  grid.innerHTML = window.VRSN_PRODUCTS.filter(function (p) { return p.id !== 'the-tee'; })
     .map(window.VRSN_CARD).join('');
   if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     grid.querySelectorAll('.reveal').forEach(function (el) {
