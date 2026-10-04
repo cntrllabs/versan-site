@@ -5,7 +5,7 @@
 import os, json
 
 OUT = os.path.dirname(os.path.abspath(__file__))
-V = "5"  # bump on every deploy — cache-busts css/js
+V = "6"  # bump on every deploy — cache-busts css/js
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230D0D0B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='38' fill='%23F4F1EB' text-anchor='middle'%3EV%3C/text%3E%3Crect x='18' y='50' width='24' height='2.5' fill='%232D6A4F'/%3E%3C/svg%3E"
 
@@ -262,7 +262,7 @@ pages["shop.html"] = chrome(
 
   <section class="apex-feature reveal" aria-label="the standard pack">
     <a class="apex-media" href="product/the-standard-issue.html">
-      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039026_0_3d.jpg?v=1783804262&width=1100" alt="the object in question." width="1100" height="1375">
+      <img loading="lazy" src="/assets/products/3039026_0_3d.jpg" alt="the object in question." width="1100" height="1375">
     </a>
     <div>
       <div class="mono-label">commission for uniform provision</div>
@@ -626,7 +626,7 @@ everything is calculated, eventually.</div>
       });
       if (items.length === 0) return;
       pr.textContent = '[ proceeding... ]';
-      window.VRSN_CHECKOUT(items).then(function (url) { location.href = url; });
+      window.VRSN_CHECKOUT(items).then(function (url) { if (url) location.href = url; });
     });
   }
   render();

@@ -335,11 +335,52 @@
     }).then(function (r) { return r.json(); });
   };
 
+  /* archive notice — shown when hosted checkout can no longer be reached. */
+  function archiveNotice() {
+    var cfg = window.VRSN_SHOPIFY || {};
+    var existing = document.getElementById('vrsn-archive');
+    if (existing) { existing.classList.add('is-open'); return; }
+
+    var el = document.createElement('div');
+    el.id = 'vrsn-archive';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-labelledby', 'vrsn-archive-t');
+    el.innerHTML =
+      '<div class="va-scrim"></div>' +
+      '<div class="va-panel">' +
+      '  <p class="va-eyebrow">checkout retired</p>' +
+      '  <h2 class="va-title" id="vrsn-archive-t">the record is closed.</h2>' +
+      '  <p class="va-body"></p>' +
+      '  <div class="va-actions">' +
+      '    <button type="button" class="va-close">[ close ]</button>' +
+      '  </div>' +
+      '</div>';
+    el.querySelector('.va-body').textContent = cfg.archiveNote || 'checkout is no longer available.';
+    document.body.appendChild(el);
+
+    function close() {
+      el.classList.remove('is-open');
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    el.querySelector('.va-close').addEventListener('click', close);
+    el.querySelector('.va-scrim').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+
+    requestAnimationFrame(function () { el.classList.add('is-open'); });
+    el.querySelector('.va-close').focus();
+  }
+
   /* real checkout: storefront cart api → hosted checkout.
-     falls back to a cart permalink if the api call fails. */
+     when the store is frozen the api and the cart permalink both dead-end on
+     shopify's "store unavailable" page, so failure surfaces the archive notice
+     instead and resolves null. callers must treat null as "handled, do not
+     navigate". */
   window.VRSN_CHECKOUT = function (lines) {
-    var permalink = (window.VRSN_STORE || '') + '/cart/' +
-      lines.map(function (l) { return l.vid + ':' + l.qty; }).join(',');
+    var cfg = window.VRSN_SHOPIFY || {};
+    if (cfg.archived) { archiveNotice(); return Promise.resolve(null); }
+
     return window.VRSN_SF(
       'mutation cartCreate($input: CartInput!) {\n' +
       '  cartCreate(input: $input) {\n' +
@@ -357,8 +398,10 @@
     ).then(function (res) {
       var url = res && res.data && res.data.cartCreate && res.data.cartCreate.cart &&
         res.data.cartCreate.cart.checkoutUrl;
-      return url || permalink;
-    }).catch(function () { return permalink; });
+      if (url) return url;
+      archiveNotice();
+      return null;
+    }).catch(function () { archiveNotice(); return null; });
   };
 
   /* live apex depletion — sums quantityAvailable across apex variants.

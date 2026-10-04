@@ -18,7 +18,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039026_0_3d.jpg?v=1783804262",
+    "img": "/assets/products/3039026_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -117,7 +117,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039022_0_3d.jpg?v=1783804244",
+    "img": "/assets/products/3039022_0_3d.jpg",
     "options": [
       {
         "label": "select cord",
@@ -221,7 +221,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039036_0_3d.jpg?v=1783825131",
+    "img": "/assets/products/3039036_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -302,7 +302,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039498_0_3d.jpg?v=1783803969",
+    "img": "/assets/products/3039498_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -422,7 +422,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039042_0_3d.jpg?v=1783806188",
+    "img": "/assets/products/3039042_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -541,7 +541,7 @@ window.VRSN_PRODUCTS = [
     "categories": [
       "accessories"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039051_0_3d.jpg?v=1783804523",
+    "img": "/assets/products/3039051_0_3d.jpg",
     "options": [
       {
         "label": "select shape",
@@ -657,7 +657,7 @@ window.VRSN_PRODUCTS = [
     "categories": [
       "accessories"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039048_0_3d.jpg?v=1783804707",
+    "img": "/assets/products/3039048_0_3d.jpg",
     "options": [
       {
         "label": "select strap",
@@ -703,7 +703,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039057_0_3d.jpg?v=1783804553",
+    "img": "/assets/products/3039057_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -1204,7 +1204,7 @@ window.VRSN_PRODUCTS = [
       "men",
       "women"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039061_0_3d.jpg?v=1783805591",
+    "img": "/assets/products/3039061_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -1285,7 +1285,7 @@ window.VRSN_PRODUCTS = [
       "women",
       "accessories"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039496_0_3d.jpg?v=1783806252",
+    "img": "/assets/products/3039496_0_3d.jpg",
     "options": [
       {
         "label": "select size",
@@ -1325,7 +1325,7 @@ window.VRSN_PRODUCTS = [
     "categories": [
       "accessories"
     ],
-    "img": "https://cdn.shopify.com/s/files/1/0865/2721/3761/files/3039059_0_3d.jpg?v=1783805472",
+    "img": "/assets/products/3039059_0_3d.jpg",
     "options": [
       {
         "label": "select finish",
